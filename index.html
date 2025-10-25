@@ -755,6 +755,25 @@ function addVehicleRow() {
   `;
   container.appendChild(newRow);
 }
+
+// Adiciona validação de data mínima (dia atual)
+(function setMinDate() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1; // Mês começa em 0
+    let dd = today.getDate();
+
+    if (mm < 10) mm = '0' + mm;
+    if (dd < 10) dd = '0' + dd;
+
+    const todayString = yyyy + '-' + mm + '-' + dd;
+
+    const dataChegada = document.getElementById("dataChegada");
+    const dataSaida = document.getElementById("dataSaida");
+
+    if (dataChegada) dataChegada.setAttribute("min", todayString);
+    if (dataSaida) dataSaida.setAttribute("min", todayString);
+})();
 </script>
 </body>
 </html>
