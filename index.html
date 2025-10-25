@@ -482,8 +482,7 @@ input:checked + .slider:before {
 
   <div id="reviewContent"></div>
 
-  <div id="peopleTitle" style="text-align: left;">LISTA DE INQUILINOS</div>
-  <div id="peopleSummary"></div>
+
 
   <div class="button-group">
     <button type="button" id="printBtn">IMPRIMIR</button>
@@ -704,10 +703,8 @@ function showReview() {
   reviewHTML += `<div class="review-item"><span class="review-label">Data de Chegada:</span> <span class="review-value">${data.get("chegada")}</span></div>`;
   reviewHTML += `<div class="review-item"><span class="review-label">Data de Saída:</span> <span class="review-value">${data.get("saida")}</span></div>`;
 
-  reviewContent.innerHTML = reviewHTML;
-
-  const peopleSummary = document.getElementById("peopleSummary");
-  peopleSummary.innerHTML = "";
+  // Adiciona a lista de pessoas ao reviewHTML
+  reviewHTML += `<div class="review-item" style="margin-top: 15px;"><span class="review-label">LISTA DE INQUILINOS:</span></div>`;
   const personRows = document.querySelectorAll("#peopleContainer .person-row");
   personRows.forEach(row => {
     const nomeInput = row.querySelector("input[name=\'responsiblePersonName\']") || row.querySelector("input[name=\'personName[]\']");
@@ -719,12 +716,12 @@ function showReview() {
     const isChild = isChildCheckbox && isChildCheckbox.checked ? " (Criança)" : "";
 
     if (nome) {
-      const summaryItem = document.createElement("div");
-      summaryItem.style.textAlign = "left";
-      summaryItem.innerHTML = `<b>${nome.toUpperCase()}</b>${isChild.toUpperCase()} - Documento: ${doc.toUpperCase()}`;
-      peopleSummary.appendChild(summaryItem);
+      reviewHTML += `<div class="review-item" style="margin-left: 20px;"><span class="review-label">Nome:</span> <span class="review-value">${nome}</span></div>`;
+      reviewHTML += `<div class="review-item" style="margin-left: 20px;"><span class="review-label">Documento:</span> <span class="review-value">${doc}</span> <span class="review-value">${isChild}</span></div>`;
     }
   });
+
+  reviewContent.innerHTML = reviewHTML;
 }
 
 function addPersonRow() {
