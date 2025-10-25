@@ -282,8 +282,10 @@ button:hover, .add-person:hover, .add-vehicle:hover, #vehicleToggleBtn:hover, #p
     background-image: url('logo-watermark.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 50%;
-    opacity: 0.5;
+    background-size: 50% !important;
+    opacity: 0.5 !important;
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
   }
   .button-group, #whatsappBtn, .form-logo img { display: none; }
 }
