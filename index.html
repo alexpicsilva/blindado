@@ -516,20 +516,20 @@ function generateWhatsAppMessage() {
 
   let message = "*Ficha de Controle de Locação*\n\n";
 
-  message += `*Edifício:* ${data.get("edificio")}\n`;
-  message += `*Apartamento:* ${data.get("apartamento")}\n`;
-  message += `*Responsável:* ${data.get("responsavel")}\n`;
-  message += `*CPF:* ${data.get("cpf")}\n`;
-  message += `*RG:* ${data.get("rg")}\n`;
-  message += `*Endereço:* ${data.get("endereco")}\n`;
-  message += `*Cidade:* ${data.get("cidade")}\n`;
-  message += `*UF:* ${data.get("uf")}\n\n`;
+  message += `*Edifício:* ${data.get("edificio").trim()}\n`;
+  message += `*Apartamento:* ${data.get("apartamento").trim()}\n`;
+  message += `*Responsável:* ${data.get("responsavel").trim()}\n`;
+  message += `*CPF:* ${data.get("cpf") ? data.get("cpf").trim() : ""}\n`;
+  message += `*RG:* ${data.get("rg") ? data.get("rg").trim() : ""}\n`;
+  message += `*Endereço:* ${data.get("endereco") ? data.get("endereco").trim() : ""}\n`;
+  message += `*Cidade:* ${data.get("cidade") ? data.get("cidade").trim() : ""}\n`;
+  message += `*UF:* ${data.get("uf") ? data.get("uf").trim() : ""}\n\n`;
 
   const vehicleRows = document.querySelectorAll("#vehicleContainer .vehicle-row");
   vehicleRows.forEach((row, index) => {
-    const modelo = row.querySelector("input[name=\'modelo\']").value;
-    const cor = row.querySelector("input[name=\'cor\']").value;
-    const placa = row.querySelector("input[name=\'placa\']").value;
+    const modelo = row.querySelector("input[name=\'modelo\']").value.trim();
+    const cor = row.querySelector("input[name=\'cor\']").value.trim();
+    const placa = row.querySelector("input[name=\'placa\']").value.trim();
     if (modelo || cor || placa) {
       message += `*Veículo ${index + 1}:* ${modelo} ${cor} - Placa: ${placa}\n\n`;
     }
@@ -544,8 +544,8 @@ function generateWhatsAppMessage() {
     const docInput = row.querySelector("input[name=\'responsiblePersonDoc\']") || row.querySelector("input[name=\'personDoc[]\']");
     const isChildCheckbox = row.querySelector(".switch input[type=\'checkbox\']");
 
-    const nome = nomeInput ? nomeInput.value : "";
-    const doc = docInput ? docInput.value : "";
+    const nome = nomeInput ? nomeInput.value.trim() : "";
+    const doc = docInput ? docInput.value.trim() : "";
     const isChild = isChildCheckbox && isChildCheckbox.checked ? " (criança)" : "";
 
     if (nome) {
@@ -693,9 +693,9 @@ function showReview() {
   const vehicleContainer = document.getElementById("vehicleContainer");
   const vehicleRows = vehicleContainer.querySelectorAll(".vehicle-row");
   vehicleRows.forEach((row, index) => {
-    const modelo = row.querySelector("input[name=\'modelo\']").value;
-    const cor = row.querySelector("input[name=\'cor\']").value;
-    const placa = row.querySelector("input[name=\'placa\']").value;
+    const modelo = row.querySelector("input[name=\'modelo\']").value.trim();
+    const cor = row.querySelector("input[name=\'cor\']").value.trim();
+    const placa = row.querySelector("input[name=\'placa\']").value.trim();
     if (modelo || cor || placa) {
       reviewHTML += `<div class="review-item"><span class="review-label">Veículo ${index + 1}:</span> <span class="review-value">${modelo} ${cor} - Placa: ${placa}</span></div>`;
     }
@@ -714,8 +714,8 @@ function showReview() {
     const docInput = row.querySelector("input[name=\'responsiblePersonDoc\']") || row.querySelector("input[name=\'personDoc[]\']");
     const isChildCheckbox = row.querySelector(".switch input[type=\'checkbox\']");
 
-    const nome = nomeInput ? nomeInput.value : "";
-    const doc = docInput ? docInput.value : "";
+    const nome = nomeInput ? nomeInput.value.trim() : "";
+    const doc = docInput ? docInput.value.trim() : "";
     const isChild = isChildCheckbox && isChildCheckbox.checked ? " (Criança)" : "";
 
     if (nome) {
