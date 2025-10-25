@@ -277,7 +277,14 @@ button:hover, .add-person:hover, .add-vehicle:hover, #vehicleToggleBtn:hover, #p
   }
   body * { visibility: hidden; }
   #reviewPage, #reviewPage * { visibility: visible; }
-  #reviewPage { position: absolute; top: 0; left: 0; width: 190mm; margin: 0 10mm; }
+  #reviewPage {
+    position: absolute; top: 0; left: 0; width: 190mm; margin: 0 10mm;
+    background-image: url('logo-watermark.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    opacity: 0.5;
+  }
   .button-group, #whatsappBtn, .form-logo img { display: none; }
 }
 
@@ -357,7 +364,7 @@ input:checked + .slider:before {
 <form id="locacaoForm" class="form-container">
   <div class="form-header-container">
     <div class="form-logo">
-      <img src="logo-transparent.png" alt="Logo Blindado">    </div>
+      <img src="logo-topo.png" alt="Logo Blindado">    </div>
     <div class="form-title">FICHA PARA CONTROLE DE LOCAÇÃO</div>
   </div>
 
@@ -475,7 +482,7 @@ input:checked + .slider:before {
 <div id="reviewPage" class="form-container">
   <div class="form-header-container">
     <div class="form-logo">
-      <img src="logo-transparent.png" alt="Logo Blindado">
+      <img src="logo-topo.png" alt="Logo Blindado">
     </div>
     <div class="form-title">FICHA PARA CONTROLE DE LOCAÇÃO</div>
   </div>
